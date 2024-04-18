@@ -1,0 +1,123 @@
+.form_regis {
+  max-width: 700px;
+  background: #fff;
+  margin-left: 500px;
+  margin-top: 20px;
+  padding: 20px 25px 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.form_regis .form {
+  margin-top: 30px;
+}
+
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.input-box label {
+  color: #333;
+}
+
+.form .input-box input {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+
+.select-box {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+
+.input-file {
+  margin-top: 20px;
+}
+
+.input-file input[type="file"] {
+  display: none;
+}
+
+.input-file label {
+  display: inline-block;
+  text-decoration: uppercase;
+  color: #fff;
+  background: #c0392b;
+  text-align: center;
+  padding: 15px 40px;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.35);
+  border-radius: 3px;
+}
+
+label i {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.form .button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.form button {
+  height: 40px;
+  width: 20%;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  margin-top: 30px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+.form .btn-cancel{
+  background-color: #c0392b;
+  margin-right: 10px;
+  align-self: flex-end;
+}
+
+.form .btn-cancel:hover{
+  background-color: #d35648;
+}
+
+.form .btn-send{
+  background-color: #3F72AF;
+  align-self: flex-start;
+}
+
+.form .btn-send:hover{
+  background-color: #61a1ef;
+}

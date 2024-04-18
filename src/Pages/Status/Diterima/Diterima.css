@@ -1,0 +1,55 @@
+.accepted {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.accept__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3f72af;
+  padding: 0.8rem 1rem;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.heading {
+  margin: 0;
+}
+
+.accept__head .diterima {
+  width: 160px;
+  height: 100%;
+  padding: 0.4rem 0;
+  border-radius: 2rem;
+  background-color: #006b21;
+  color: #fff;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.accepted .button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.accepted button {
+  height: 40px;
+  width: 20%;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  margin-top: 30px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+.accepted .btn-back{
+  background-color: #3F72AF;
+}
+
+.accepted .btn-back:hover{
+  background-color: #61a1ef;
+}

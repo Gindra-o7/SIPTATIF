@@ -1,0 +1,129 @@
+.profilepages {
+  margin-left: 250px;
+  padding: 25px;
+}
+
+.edit-section{
+  background-color: #81a8d6;
+  padding: 60px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-img {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-img img {
+  width: 160px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.profile-img .change-profile {
+  position: absolute;
+  top: 150px;
+  right: 500px;
+  transform: translate(50%, -50%);
+  height: auto;
+  width: 25px;
+}
+
+.profilepages .form {
+  margin-top: 30px;
+}
+
+.form .input-profil {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.input-profil .input-field {
+  display: flex;
+}
+
+.input-field .icon {
+  margin: 0 10px 0 20px;
+  width: 25px;
+  height: auto;
+}
+
+.input-profil label {
+  color: #1d1d1d;
+  font-weight: 600;
+}
+
+.form .input-profil input {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+
+.profilepages .button-profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.button-profile button {
+  height: 40px;
+  width: 20%;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  margin-top: 30px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-save {
+  background-color: #3f72af;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.btn-save:hover {
+  background-color: #61a1ef;
+}
+
+.select-profile {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+
+.select-profile select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}

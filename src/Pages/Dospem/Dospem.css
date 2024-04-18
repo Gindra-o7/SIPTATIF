@@ -1,0 +1,23 @@
+.dospem {
+  margin-left: 250px;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+.table__body{
+  margin-top: 10px;
+}
+
+.select-box .list-sort{
+  height: 40px;
+  width: 400px;
+  border-radius: 6px;
+}
+
+.icon-cell{
+  text-align: center;
+}
+
+.arrow-icon{
+  color: black;
+}

@@ -1,0 +1,82 @@
+.reject {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.reject__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3f72af;
+  padding: 0.8rem 1rem;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.heading {
+  margin: 0;
+}
+
+.table__container {
+  background-color: #e29c9c;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.reject__head .ditolak {
+  width: 160px;
+  height: 100%;
+  padding: 0.4rem 0;
+  border-radius: 2rem;
+  background-color: #b30021;
+  color: #fff;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.reject .button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reject button {
+  height: 40px;
+  width: 20%;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  margin-top: 30px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+.reject .btn-back {
+  background-color: #3f72af;
+}
+
+.reject .btn-back:hover {
+  background-color: #61a1ef;
+}
+
+.table__body table {
+  width: 100%;
+}
+
+.table__body table tr:last-child {
+  width: 100%;
+}
+
+.table__body table tr:last-child td {
+  width: 50%;
+}
+
+.table__body table tr:last-child td a {
+  display: block;
+  text-align: center;
+}
+
+.table__body table tr:last-child td h4 {
+  margin: 0;
+}

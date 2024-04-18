@@ -1,0 +1,12 @@
+body{
+  background: #DBE2EF;
+  overflow-y: hidden;
+}
+
+.login-form{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
