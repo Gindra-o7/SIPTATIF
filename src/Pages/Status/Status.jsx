@@ -3,8 +3,31 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Header from "../../Components/Header/Header";
 import Sidebar from "../../Components/Sidebar/Sidebar";
+import { useState, useEffect } from "react";
 
 const Status = () => {
+  const [statusData, setStatusData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://siptatif-backend.vercel.app/api/ta");
+        const result = await response.json();
+        
+        const userEmail = localStorage.getItem("userEmail");
+        if (userEmail) {
+          const nim = userEmail.split("@")[0];
+          const filteredData = result.data.filter(item => item.nim === nim);
+          setStatusData(filteredData);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div>
       <Sidebar />
@@ -24,42 +47,32 @@ const Status = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>16 April 2024</td>
-                <td>SIPTATIF</td>
-                <td>
-                  <p className="status ditolak">Ditolak</p>
-                </td>
-                <td className="icon-cell">
-                  <Link to="/ditolak">
-                    <FaArrowRight className="arrow-icon" />
-                  </Link>
-                </td>
-              </tr>
-              <tr>
-                <td>16 April 2024</td>
-                <td>SIPTATIF</td>
-                <td>
-                  <p className="status diterima">Diterima</p>
-                </td>
-                <td className="icon-cell">
-                  <Link to="/diterima">
-                    <FaArrowRight className="arrow-icon" />
-                  </Link>
-                </td>
-              </tr>
-              <tr>
-                <td>16 April 2024</td>
-                <td>SIPTATIF</td>
-                <td>
-                  <p className="status menunggu">Menunggu</p>
-                </td>
-                <td className="icon-cell">
-                  <Link to="/" className="dot">
-                    ....
-                  </Link>
-                </td>
-              </tr>
+              {statusData.map(item => (
+                <tr key={item._id}>
+                  <td>{new Date(item.createdAt).toLocaleDateString()}</td>
+                  <td>{item.judul}</td>
+                  <td>
+                    <p className={`status-${item.status.toLowerCase()}`}>{item.status}</p>
+                  </td>
+                  <td className="icon-cell">
+                    {item.status.toLowerCase() === 'ditolak' && (
+                      <Link to={`/ditolak/${item._id}`}>
+                        <FaArrowRight className="arrow-icon" />
+                      </Link>
+                    )}
+                    {item.status.toLowerCase() === 'diterima' && (
+                      <Link to={`/diterima/${item._id}`}>
+                        <FaArrowRight className="arrow-icon" />
+                      </Link>
+                    )}
+                    {item.status.toLowerCase() === 'diproses' && (
+                      <Link to={`/diproses/${item._id}`} className="dot">
+                        ....
+                      </Link>
+                    )}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </section>

@@ -1,8 +1,44 @@
 import "./Dashboard.css";
 import Header from "../../Components/Header/Header";
 import Sidebar from "../../Components/Sidebar/Sidebar";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const token = localStorage.getItem("token");
+      const userEmail = localStorage.getItem("userEmail");
+
+      if (!token || !userEmail) {
+        console.error("No token or user email found");
+        return;
+      }
+
+      try {
+        const response = await fetch("https://siptatif-backend.vercel.app/api/auth/user", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+
+        const { data } = await response.json();
+        const user = data.find(user => user.email === userEmail);
+        setUsername(user ? user.nama : "Unknown User");
+      } catch (error) {
+        console.error("Failed to fetch user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   return (
     <div>
@@ -13,7 +49,7 @@ const Dashboard = () => {
           ٱلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللَّٰهِ وَبَرَكَاتُهُ
         </h1>
         <h2 className="title">
-          Selamat Datang kembali, <span id="nama">Gilang Ramadhan Indra</span>
+          Selamat Datang, <span id="nama">{username}</span> {/* Display the fetched username */}
         </h2>
         <p className="description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
@@ -27,7 +63,7 @@ const Dashboard = () => {
           saepe quisquam exercitationem, maxime in nostrum laudantium sunt
           itaque sequi.
         </p>
-        <p className="description" style={{marginTop:"20px"}}>
+        <p className="description" style={{ marginTop: "20px" }}>
           Consequuntur corrupti esse veritatis reiciendis optio saepe nisi.
           Dolorem doloremque explicabo nesciunt quidem ipsum! Enim labore quam
           architecto quo libero dolore et. Rem ut animi modi quos quia

@@ -121,3 +121,8 @@ label i {
 .form .btn-send:hover{
   background-color: #61a1ef;
 }
+
+.input-file.file-uploaded label {
+  background-color: #4caf50;
+  color: white;
+}

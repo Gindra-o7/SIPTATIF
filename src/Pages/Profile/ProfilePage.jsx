@@ -1,5 +1,5 @@
 import "./Profile.css";
-import Profile from "../../assets/Profile.jpg";
+import Profile from "../../assets/Profile.png";
 import { FaEdit } from "react-icons/fa";
 import { AiFillPicture } from "react-icons/ai";
 import Header from "../../Components/Header/Header";

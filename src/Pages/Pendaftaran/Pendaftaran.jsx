@@ -2,8 +2,44 @@ import "./Pendaftaran.css";
 import { Link } from "react-router-dom";
 import Header from "../../Components/Header/Header";
 import Sidebar from "../../Components/Sidebar/Sidebar";
+import { useState, useEffect } from "react";
 
 const Pendaftaran = () => {
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://siptatif-backend.vercel.app/api/ta");
+        const result = await response.json();
+
+        const userEmail = localStorage.getItem("userEmail");
+        if (userEmail) {
+          const nim = userEmail.split("@")[0];
+          const userFilteredData = result.data.filter(item => item.nim === nim);
+          setFilteredData(userFilteredData);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const getStatusClass = (status) => {
+    switch (status.toLowerCase()) {
+      case 'diproses':
+        return 'status-diproses';
+      case 'ditolak':
+        return 'status-ditolak';
+      case 'diterima':
+        return 'status-diterima';
+      default:
+        return '';
+    }
+  };
+
   return (
     <div>
       <Sidebar />
@@ -22,27 +58,13 @@ const Pendaftaran = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>16 April 2024</td>
-                <td>SIPTATIF</td>
-                <td>
-                  <p className="status ditolak">Ditolak</p>
-                </td>
-              </tr>
-              <tr>
-                <td>16 April 2024</td>
-                <td>SIPTATIF</td>
-                <td>
-                  <p className="status diterima">Diterima</p>
-                </td>
-              </tr>
-              <tr>
-                <td>16 April 2024</td>
-                <td>SIPTATIF</td>
-                <td>
-                  <p className="status menunggu">Menunggu</p>
-                </td>
-              </tr>
+              {filteredData.map(item => (
+                <tr key={item._id}>
+                  <td>{new Date(item.createdAt).toLocaleDateString()}</td>
+                  <td>{item.judul}</td>
+                  <td className={getStatusClass(item.status)}>{item.status}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </section>

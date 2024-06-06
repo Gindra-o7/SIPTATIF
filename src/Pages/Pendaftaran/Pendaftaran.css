@@ -69,17 +69,17 @@ tbody tr:hover {
   text-align: center;
 }
 
-.status.diterima {
+.status-diterima {
   background-color: #86e49d;
   color: #006b21;
 }
 
-.status.ditolak {
+.status-ditolak {
   background-color: #d893a3;
   color: #b30021;
 }
 
-.status.menunggu {
+.status-diproses {
   background-color: #ebc474;
 }
 

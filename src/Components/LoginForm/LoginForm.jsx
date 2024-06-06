@@ -4,46 +4,79 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const LoginForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleRedirectToHome = () => {
-    navigate("/dashboard");
-  };
+    const data = {
+      email: email,
+      password: password,
+    };
 
-  const dummyData = {
-    email: "fulanbinfulan@example.com"
+    try {
+      const response = await fetch("https://siptatif-backend.vercel.app/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        localStorage.setItem("token", result.token);
+        localStorage.setItem("userEmail", email);
+        navigate("/dashboard");
+      } else {
+        const result = await response.json();
+        setErrorMessage(result.message || "Login gagal. Silakan coba lagi.");
+      }
+    } catch (error) {
+      setErrorMessage("Terjadi kesalahan. Silakan coba lagi.");
+    }
   };
 
   return (
     <div>
       <div className="wrapper">
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <h1>Login</h1>
-
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
           <div className="input-box">
             <FaUserAlt className="icon" />
-            <input type="text" placeholder={dummyData.email} required />
+            <input
+              type="text"
+              placeholder="Email"
+              style={{ paddingLeft: "15px" }}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
 
           <div className="input-box">
             <input
               type={passwordVisible ? "text" : "password"}
               placeholder="Password"
+              style={{ paddingLeft: "15px" }}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
             {passwordVisible ? (
               <FaEye className="eye-icon" onClick={togglePasswordVisibility} />
             ) : (
-              <FaEyeSlash
-                className="eye-icon"
-                onClick={togglePasswordVisibility}
-              />
+              <FaEyeSlash className="eye-icon" onClick={togglePasswordVisibility} />
             )}
           </div>
 
@@ -55,13 +88,13 @@ const LoginForm = () => {
             <Link to="/lupapsw">Forgot Password</Link>
           </div>
 
-          <button type="button" onClick={handleRedirectToHome}>
+          <button type="submit">
             Masuk
           </button>
 
           <div className="register-link">
             <p>
-              Tidak punya akun ? <Link to="/register">Daftar</Link>
+              Tidak punya akun? <Link to="/register">Daftar</Link>
             </p>
           </div>
         </form>
